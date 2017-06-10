@@ -1,7 +1,8 @@
 {
-  "name": "ionic-multiselect-ks",
+  "name": "729-ionic-multiselect",
   "version": "0.1",
   "authors": [
+    "Martin Peveri <martinpeveri@gmail.com>",
     "Kshitij Gupta <ksedate@gmail.com>"
   ],
   "description": "Multiselect for Inonic Framework.",
