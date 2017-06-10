@@ -8,7 +8,7 @@ Install
 
 Via bower::
 
-    bower install ionic-multiselect
+    bower install 729-ionic-multiselect
 
 Getting started
 ---------------
