@@ -273,8 +273,34 @@ angular.module("ionic-multiselect", [])
         */
         scope.validate = function() {
           scope.fetchCheckedItems();
+          /** Setting the new default data to the recently selected items on closing. 
+          So when the dialog is opened next, the currently checked items are checked. */
+          scope.updateDefaultData();
           scope.hideItems();
         };
+
+        /**
+         * @name back
+         * @desc Hides the modal window and shows the previously selected items
+         */
+        scope.back = function() {
+          scope.fetchCheckedDefaultItems();
+          scope.hideItems();
+        }
+
+        /**
+         * @name updateDefault
+         * @desc updates the default values to the latest selected values, so the next time
+         * the modal window opens, it shows the latest selected items
+         */
+        scope.updateDefaultData = function() {
+          scope.defaultValue = [];
+          angular.forEach(scope.itemChecked, function(item, key) {
+            if (item[scope.checkedProperty]) {
+              scope.defaultValue.push(scope.getItemValue(item));
+            }
+          });
+        }
 
         /**
          * @name fetchCheckedItems
@@ -302,9 +328,13 @@ angular.module("ionic-multiselect", [])
           scope.value = [];
           if (scope.items) {
             var arrChecked = [];
+            /** Marking checked as false for all items. Only default items will be marked as checked.*/
+            angular.forEach(scope.items, function(item, key) {
+              item.checked=false;
+            });
             angular.forEach(scope.defaultValue, function(defaultitem){
                 angular.forEach(scope.items, function(item, key) {
-                if (item.text==defaultitem) {
+                if (item[scope.textProperty]==defaultitem) {
                   scope.value[key] = scope.getItemValue(item);
                   item.checked=true;
                   arrChecked.push(item);
