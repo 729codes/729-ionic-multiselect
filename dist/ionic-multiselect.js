@@ -111,7 +111,8 @@ angular.module("ionic-multiselect", [])
         items: "=", // Needs to have a values
         defaultValue: "=", // Needs to have a default values selected
         valueChangedCallback: "&valueChanged", // The callback used to signal that the value has changed
-        getCustomTextCallback: "&getCustomText" // The callback used to get custom text based on the selected value
+        getCustomTextCallback: "&getCustomText", // The callback used to get custom text based on the selected value
+        parentC: "=" // The parentController so the template can be modified as per requirement
       },
       //Conected directive
       link: function(scope, element, attrs) {
