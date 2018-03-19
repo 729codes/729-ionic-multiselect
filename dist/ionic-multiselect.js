@@ -92,7 +92,8 @@ angular.module("ionic-multiselect", [])
   *      template-url="bower_components/ionic-multiselect/templates/item-template.html"
   *      note-text="Note Text"
   *      value-changed="onValueChanged(value)"
-  *      defaul-value="datadefault">
+  *      defaul-value="datadefault"
+   *     max-select-count=20>
   *   </multiselect>
   */
   .directive("multiselect", ["$ionicModal", "multiselect", function($ionicModal, multiselect) {
@@ -133,6 +134,8 @@ angular.module("ionic-multiselect", [])
         scope.modalAnimation = attrs.modalAnimation;
         // Note properties
         scope.noteText = attrs.noteText || "";
+        //maxSelectCount : To restrict the number of selections in the Select box.
+        scope.maxSelectCount = attrs.maxSelectCount || scope.items.length;
 
         //Init modal with the items
         if (scope.modalTemplateUrl) {
